@@ -38,44 +38,39 @@ class _ProductScreenState extends State<ProductScreen> {
                     (e) => Padding(
                       padding: const EdgeInsets.all(10),
                       child: Container(
-                        height: MediaQuery.of(context).size.height * 0.08,
+                        height: MediaQuery.of(context).size.height * 0.19,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                          color: Colors.blueGrey.shade300,
+                          color: Colors.blueGrey.shade100,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Text("${e['Quantity']}"),
-                            ),
-                            const SizedBox(
-                              width: 25,
-                            ),
-                            Text("${e['Name']}"),
-                            const SizedBox(
-                              width: 60,
-                            ),
-                            Text("${e['Total']}"),
-                            Row(
-                              children: [
-                                const Text("Pcs"),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Text("${e['Product']}")
-                              ],
-                            ),
-                            const Spacer(),
-                            IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    Global.g1.invoicelist.remove(e);
-                                  });
-                                },
-                                icon: const Icon(Icons.delete)),
-                          ],
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Customer Name : ${e['Name']}"),
+                              Text("Invoice No : ${e['Invoice']}"),
+                              Text("Product Name : ${e['Product']}"),
+                              Text("Quantity : ${e['Qa']}"),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Discount %: ${e['Discount']}"),
+                                  Text("Product Price : ${e['Price']}"),
+                                  Text("Total:${e['Total']}"),
+                                  IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          Global.g1.invoicelist.remove(e);
+                                        });
+                                      },
+                                      icon: const Icon(Icons.delete)),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

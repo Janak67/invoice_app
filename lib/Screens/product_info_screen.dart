@@ -14,6 +14,7 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
   TextEditingController txtProduct = TextEditingController();
   TextEditingController txtQuantity = TextEditingController();
   TextEditingController txtPrice = TextEditingController();
+  TextEditingController txtDiscount = TextEditingController();
   double total = 0;
 
   @override
@@ -47,8 +48,6 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
                   child: TextField(
                     controller: txtName,
                     decoration: const InputDecoration(
-                      hintText: "Choose Customer Name",
-                      suffixIcon: Icon(Icons.arrow_drop_down),
                       label: Text("Customer Name"),
                     ),
                   ),
@@ -60,7 +59,6 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
                   controller: txtInvoice,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
-                    hintText: "Invoice No.",
                     label: Text("Invoice Number"),
                   ),
                 ),
@@ -70,8 +68,17 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
                 TextField(
                   controller: txtProduct,
                   decoration: const InputDecoration(
-                    hintText: "Choose Product",
-                    suffixIcon: Icon(Icons.arrow_drop_down),
+                    label: Text("Choose Product"),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: txtDiscount,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    label: Text("Discount"),
                   ),
                 ),
                 const SizedBox(
@@ -85,7 +92,6 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
                         controller: txtQuantity,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
-                          hintText: "Quantity",
                           label: Text("Quantity"),
                         ),
                       ),
@@ -99,7 +105,6 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
                         controller: txtPrice,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
-                          hintText: "Price",
                           label: Text("Price"),
                         ),
                       ),
@@ -113,19 +118,22 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
                   alignment: Alignment.center,
                   child: ElevatedButton(
                     onPressed: () {
-                      Map m1 = {
-                        "Name": txtName.text,
-                        "Invoice":txtInvoice.text,
-                        "Product":txtProduct.text,
-                        "Qa":txtQuantity.text,
-                        "Price":txtPrice.text,
-                      };
-                     Global.g1.invoicelist.add(m1);
-                     Navigator.pop(context);
                       setState(() {
                         total = double.parse(txtPrice.text) *
                             double.parse(txtQuantity.text);
                       });
+                      Map m1 = {
+                        "Name": txtName.text,
+                        "Invoice": txtInvoice.text,
+                        "Product": txtProduct.text,
+                        "Discount": txtDiscount.text,
+                        "Qa": txtQuantity.text,
+                        "Price": txtPrice.text,
+                        "Total": total,
+                      };
+                      Global.g1.invoicelist.add(m1);
+                      Navigator.pop(context);
+
                     },
                     child: const Text(
                       "Submit",
