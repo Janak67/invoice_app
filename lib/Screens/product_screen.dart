@@ -29,6 +29,13 @@ class _ProductScreenState extends State<ProductScreen> {
             ),
           ),
           backgroundColor: Colors.blue,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, 'pdf');
+                },
+                icon: const Icon(Icons.picture_as_pdf))
+          ],
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -38,7 +45,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     (e) => Padding(
                       padding: const EdgeInsets.all(10),
                       child: Container(
-                        height: MediaQuery.of(context).size.height * 0.19,
+                        height: MediaQuery.of(context).size.height * 0.22,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           color: Colors.blueGrey.shade100,
@@ -52,12 +59,12 @@ class _ProductScreenState extends State<ProductScreen> {
                               Text("Customer Name : ${e['Name']}"),
                               Text("Invoice No : ${e['Invoice']}"),
                               Text("Product Name : ${e['Product']}"),
+                              Text("Discount : ${e['Discount']}%"),
                               Text("Quantity : ${e['Qa']}"),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Discount %: ${e['Discount']}"),
                                   Text("Product Price : ${e['Price']}"),
                                   Text("Total:${e['Total']}"),
                                   IconButton(

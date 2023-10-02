@@ -23,19 +23,16 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
-          title: const Text(
-            "Invoice Generator",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              shadows: [
-                Shadow(
-                  color: Colors.black,
-                  offset: Offset(2, 2),
-                )
-              ],
-            ),
-          ),
+          title: const Text("Invoice Generator",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black,
+                      offset: Offset(2, 2),
+                    )
+                  ])),
           backgroundColor: Colors.blue,
         ),
         body: SingleChildScrollView(
@@ -43,44 +40,19 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: TextField(
-                    controller: txtName,
-                    decoration: const InputDecoration(
-                      label: Text("Customer Name"),
-                    ),
-                  ),
-                ),
+                textTile(txtName, "Customer Name", TextInputType.name),
                 const SizedBox(
                   height: 10,
                 ),
-                TextField(
-                  controller: txtInvoice,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    label: Text("Invoice Number"),
-                  ),
-                ),
+                textTile(txtInvoice, "Invoice Number", TextInputType.number),
                 const SizedBox(
                   height: 10,
                 ),
-                TextField(
-                  controller: txtProduct,
-                  decoration: const InputDecoration(
-                    label: Text("Choose Product"),
-                  ),
-                ),
+                textTile(txtProduct, "Choose Product", TextInputType.name),
                 const SizedBox(
                   height: 10,
                 ),
-                TextField(
-                  controller: txtDiscount,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    label: Text("Discount"),
-                  ),
-                ),
+                textTile(txtDiscount, "Discount", TextInputType.number),
                 const SizedBox(
                   height: 10,
                 ),
@@ -133,7 +105,6 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
                       };
                       Global.g1.invoicelist.add(m1);
                       Navigator.pop(context);
-
                     },
                     child: const Text(
                       "Submit",
@@ -156,6 +127,17 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  TextField textTile(
+      TextEditingController controller, String hint, TextInputType keyboard) {
+    return TextField(
+      controller: controller,
+      keyboardType: keyboard,
+      decoration: InputDecoration(
+        label: Text(hint),
       ),
     );
   }
