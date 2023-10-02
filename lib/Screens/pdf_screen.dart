@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_app/Utills/pdf.dart';
 
 import '../Utills/global.dart';
 
@@ -23,6 +24,13 @@ class _PdfScreenState extends State<PdfScreen> {
             ),
           ),
           backgroundColor: Colors.blue,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  pdfGenerate();
+                },
+                icon: const Icon(Icons.picture_as_pdf))
+          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -75,7 +83,7 @@ class _PdfScreenState extends State<PdfScreen> {
                         const Row(
                           children: [
                             Text(
-                              "Product Name",
+                              "P.Name",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
@@ -113,7 +121,7 @@ class _PdfScreenState extends State<PdfScreen> {
                                       "${e['Qa']}",
                                       style: const TextStyle(fontSize: 18),
                                     ),
-                                   const Spacer(),
+                                    const Spacer(),
                                     Text(
                                       "${e['Price']}",
                                       style: const TextStyle(fontSize: 18),

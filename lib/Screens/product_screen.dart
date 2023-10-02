@@ -20,12 +20,6 @@ class _ProductScreenState extends State<ProductScreen> {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              shadows: [
-                Shadow(
-                  color: Colors.black,
-                  offset: Offset(2, 2),
-                )
-              ],
             ),
           ),
           backgroundColor: Colors.blue,

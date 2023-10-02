@@ -25,14 +25,9 @@ class _ProductInfoScreenState extends State<ProductInfoScreen> {
         appBar: AppBar(
           title: const Text("Invoice Generator",
               style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  shadows: [
-                    Shadow(
-                      color: Colors.black,
-                      offset: Offset(2, 2),
-                    )
-                  ])),
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              )),
           backgroundColor: Colors.blue,
         ),
         body: SingleChildScrollView(
