@@ -60,10 +60,16 @@ class _PdfScreenState extends State<PdfScreen> {
                 const Divider(height: 10),
                 Column(
                   children: [
-                    const Text(
-                      "Customer Name : Janak",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    Column(
+                      children: Global.g1.invoicelist
+                          .map(
+                            (e) => Text(
+                              "Customer Name : ${e['Name']}",
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          )
+                          .toList(),
                     ),
                     const Text(
                       "Customer Address : Varachha ",
