@@ -77,7 +77,7 @@ class _PdfScreenState extends State<PdfScreen> {
                             Text(
                               "Product Name",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             Spacer(),
                             Text(
